@@ -1,3 +1,3 @@
-# {{PROJECT}}
+# strategic-persuader
 
 @../AGENTS.md
