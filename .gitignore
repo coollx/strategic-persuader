@@ -1,0 +1,17 @@
+# structural rules only; grown event-driven via the close-out triage
+outputs/
+data/
+checkpoints/
+scratch/
+wandb/
+__pycache__/
+*.egg-info/
+.env
+refs/**/repo/
+.claude/settings.local.json
+# run folders: deny by default, re-include the three human/canonical files
+experiments/*/runs/**
+!experiments/*/runs/*/
+!experiments/*/runs/*/run.yaml
+!experiments/*/runs/*/*_plan.md
+!experiments/*/runs/*/summary.json
