@@ -78,7 +78,7 @@ Follow `references/repo-analysis-protocol.md` to produce `refs/related-work/<Nam
 
 ## Step 7 — Update `refs/index.md`
 
-Upsert a row for this ref. Column guidance: **Ref** — folder name. **Type** — `method` or `empirical`. **Paper** — original title (italicized), linking the local `related-work/<Name>/paper.pdf`; the upstream URL goes in the Summary or Code column. **Code** — ✅ linking the local clone `[repo/](related-work/<Name>/repo)` plus the upstream `[src](<url>)`, or ❌ if unavailable. **Summary** — 2–4 sentences covering both the paper's contribution AND what the code provides — this is the human-scannable heart of the index, make it genuinely informative. **Analyses** — links to both analysis files (omit the repo link if no code). Rows ordered by date added, newest at the bottom.
+Upsert a row for this ref. Column order: Ref, Paper, Type, Code, Summary, Analyses. Column guidance: **Ref** — folder name. **Paper** — original title (italicized), linking the local `related-work/<Name>/paper.pdf`; the upstream URL goes in the Summary or Code column. **Type** — `method` or `empirical`. **Code** — ✅ linking the local clone `[repo/](related-work/<Name>/repo)` plus the upstream `[src](<url>)`, or ❌ if unavailable. **Summary** — 2–4 sentences covering both the paper's contribution AND what the code provides — this is the human-scannable heart of the index, make it genuinely informative. **Analyses** — links to both analysis files (omit the repo link if no code). Rows ordered by date added, newest at the bottom.
 
 ## Step 8 — Report
 
