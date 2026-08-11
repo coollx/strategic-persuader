@@ -31,9 +31,9 @@ When routing is ambiguous: ask the researcher. Never guess.
 
 Line format (exactly this shape; the commit gate checks it):
 
-    2026-08-06 · T-042 · [analysis] judge term carries +4pp, cost term inert · analyses/reward-ablation/
+    - 2026-08-06 · T-042 · [analysis] judge term carries +4pp, cost term inert · analyses/reward-ablation/
 
-date · task id · [type] plain-language summary · the product's path (one path, never a file enumeration — the commit carries the file list). Append with shell `>>`, never editor rewrite. Lines are never edited; a correction is a new line repeating the old line's path and key terms.
+`- ` bullet (so the month file renders as a markdown list), then date · task id · [type] plain-language summary · the product's path (one path, never a file enumeration — the commit carries the file list). Append with shell `>>`, never editor rewrite. Lines are never edited; a correction is a new line repeating the old line's path and key terms; a log rewrite happens only at the researcher's explicit direction, never on the agent's initiative.
 
 - Commits exist only at outcome boundaries. Default: one operation, one commit. Operations from the same task that were validated together as one coherent outcome may share one commit, carrying one spine line per durable product — merge only when they'd be reviewed as one diff; when in doubt, split. Message = `T-NNN: summary`. Bookkeeping (status flips, memory entries, incident notes) rides inside its outcome's commit; work-in-progress stays uncommitted until the outcome completes.
 - Stage explicit paths only — never `git add -A` (parallel sessions share the tree).

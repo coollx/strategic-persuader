@@ -39,7 +39,7 @@ for f in docs/tasks/T-*.md; do
   st=$(grep -m1 '^status:' "$f" | awk '{print $2}')
   case "$st" in done|killed) continue ;; esac
   id=$(basename "$f" | grep -oE '^T-[0-9]+')
-  last=$(grep -h "· $id ·" docs/log/*.md 2>/dev/null | tail -1 | awk -F' · ' '{print $1}')
+  last=$(grep -h "· $id ·" docs/log/*.md 2>/dev/null | tail -1 | awk -F' · ' '{sub(/^- /,"",$1); print $1}')
   echo "  ${st:-?}  $(basename "$f" .md)  last spine line: ${last:-none yet}"
 done
 SPINE=$(ls docs/log/2*.md 2>/dev/null | tail -1)

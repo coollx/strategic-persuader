@@ -13,7 +13,7 @@ Task-file format and rules live in AGENTS.md (Tasks); this skill is only the pro
 2. Interview relentlessly until shared understanding: walk down each branch of the design, resolving dependencies between decisions batch by batch; questions come in batches of 3, each with a recommended answer; if a question can be answered by exploring the codebase, explore instead of asking. Scale to the task — a small task needs one batch, not seven. If the interview resolves something direction-steering (hard to reverse ∧ surprising without context ∧ real trade-off), propose a decision record on the spot.
 3. Allocate T-NNN (max across git history and `docs/tasks/`, +1). Write the four-field file, status `planned`. Plan lines name their product type and the exact files or directories they will create or edit — nothing compressed, one line per run.
 4. Show the file to the researcher for approval.
-5. Append the spine line (`date · T-NNN · [task] planned <slug> · docs/tasks/T-NNN-slug.md`), commit as `T-NNN: planned <slug>` staging explicit paths. Plan edits and backlog entries are [task] lines too — `docs/tasks/` is the [task] product's home.
+5. Append the spine line (`- date · T-NNN · [task] planned <slug> · docs/tasks/T-NNN-slug.md`), commit as `T-NNN: planned <slug>` staging explicit paths. Plan edits and backlog entries are [task] lines too — `docs/tasks/` is the [task] product's home.
 
 ## execute
 

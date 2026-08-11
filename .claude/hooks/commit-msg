@@ -8,7 +8,7 @@ subject=$(head -1 "$1")
 [ -e "$(git rev-parse --git-dir)/MERGE_HEAD" ] && exit 0
 
 TYPES='experiment|analysis|code|asset|reference|decision|task|framing|paper|meta'
-LINE="[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01]) · T-[0-9]+ · \[($TYPES)\] .+ · .+"
+LINE="- [0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01]) · T-[0-9]+ · \[($TYPES)\] .+ · .+"
 
 logdiff=$(git diff --cached -- docs/log)
 
@@ -21,20 +21,20 @@ added_all=$(echo "$logdiff" | grep -E '^\+' | grep -vE '^\+\+\+')
 malformed=$(echo "$added_all" | grep -vE "^\+$LINE" | grep -v '^+$' | grep -q . && echo yes)
 if [ "$malformed" = yes ]; then
   echo "commit rejected: malformed spine line. Required shape:" >&2
-  echo "  $(date +%F) · T-NNN · [type] summary · product/path      (type ∈ $TYPES)" >&2
+  echo "  - $(date +%F) · T-NNN · [type] summary · product/path      (type ∈ $TYPES)" >&2
   exit 1
 fi
 
 added=$(echo "$added_all" | grep -E "^\+$LINE")
 if [ -z "$added" ]; then
   echo "commit rejected: no spine line added under docs/log/." >&2
-  echo "append to docs/log/$(date +%Y-%m).md:  $(date +%F) · T-NNN · [type] summary · product/path" >&2
+  echo "append to docs/log/$(date +%Y-%m).md:  - $(date +%F) · T-NNN · [type] summary · product/path" >&2
   echo "and commit as 'T-NNN: summary'. (--no-verify = emergency bypass)" >&2
   exit 1
 fi
 
 tid=$(echo "$subject" | grep -oE '^T-[0-9]+')
-ids=$(echo "$added" | grep -oE 'T-[0-9]+' | sort -u)
+ids=$(echo "$added" | awk -F' · ' '{print $2}' | sort -u)
 if [ -z "$tid" ] || ! echo "$ids" | grep -qx "$tid"; then
   echo "commit rejected: subject must start with 'T-NNN:' matching the added spine line (added: $(echo $ids | tr '\n' ' '))." >&2
   exit 1
