@@ -2,9 +2,9 @@
 
 - **Original title**: Ads in AI Chatbots? An Analysis of How Large Language Models Navigate Conflicts of Interest
 - **Authors**: Addison J. Wu*, Ryan Liu* (Princeton University), Shuyue Stella Li, Yulia Tsvetkov (University of Washington), Thomas L. Griffiths (Princeton University); * = equal contribution
-- **Venue / year**: arXiv preprint, April 9, 2026
+- **Venue / year**: arXiv preprint, April 9, 2026; a workshop version was accepted as a poster at the ICLR 2026 Workshop on Algorithmic Fairness Across Alignment Procedures and Agentic Systems (AFAA), Rio de Janeiro, April 2026
 - **Source**: [arXiv:2604.08525](https://arxiv.org/abs/2604.08525)
-- **OpenReview**: a forum page exists at [openreview.net/forum?id=anDIdtSuA8](https://openreview.net/forum?id=anDIdtSuA8), but as of 2026-08-12 neither OpenReview API returns any publicly readable notes for it (the paper is presumably under anonymous review) — see Section 7
+- **OpenReview**: workshop forum with reviews at [openreview.net/forum?id=kioO6a0oHM](https://openreview.net/forum?id=kioO6a0oHM) (see Section 7); a second forum at [openreview.net/forum?id=anDIdtSuA8](https://openreview.net/forum?id=anDIdtSuA8) has no publicly readable notes as of 2026-08-12, consistent with a main-venue submission still under anonymous review
 - **Type**: empirical study (behavioral analysis of 23 deployed LLMs; the contribution is a scenario framework plus measured findings, not a trained artifact)
 - **Code**: no public code (no repository link anywhere in the paper; web search on 2026-08-12 finds none)
 
@@ -90,4 +90,20 @@ c) **Bottom line.** Trust the direction and rough magnitudes for single-turn, pr
 
 ## 7. Reviewer Reception
 
-An OpenReview forum for this exact title exists at [https://openreview.net/forum?id=anDIdtSuA8](https://openreview.net/forum?id=anDIdtSuA8), but no notes on it are publicly readable: both the v1 and v2 OpenReview APIs return zero notes for the forum without authentication (checked 2026-08-12), consistent with a submission under anonymous review whose reviews are not yet public. No decision, scores, or reviews can therefore be reported. As with the GTAlign reference, the researcher's authenticated OpenReview account could retrieve reviews if/when they become visible; revisit after the current review cycle concludes.
+Retrieved 2026-08-12 via the researcher-authenticated OpenReview API (the forum's notes are not anonymously readable from this machine).
+
+a) **Link & outcome.** [https://openreview.net/forum?id=kioO6a0oHM](https://openreview.net/forum?id=kioO6a0oHM) — Submission 51 to the ICLR 2026 Workshop on Algorithmic Fairness Across Alignment Procedures and Agentic Systems (AFAA), Main Papers Track. Decision: **Accept (Poster)**. Three official reviews with ratings 4 (confidence 4), 3 (confidence 2), and 2 (confidence 3); the review form's rating scale is not exposed in the API data. The meta-review (area chair confidence 2, "not sure") states there was consensus on the topic's timeliness and novelty but "mixed final verdicts due to the execution," and recommends acceptance despite the borderline score "for the sake of discussions that the paper could spark." A separate forum ([anDIdtSuA8](https://openreview.net/forum?id=anDIdtSuA8)) remains non-public as of 2026-08-12, consistent with a main-venue submission still under review; revisit when that cycle concludes.
+
+b) **Main criticisms** (attributed; R1 = rating-4 review, R2 = rating-3 review, R3 = rating-2 review):
+
+- **Single-domain generalizability (R1, R2).** Every experiment uses flight booking — a commodity-like product where price is the main differentiator. Unclear transfer to domains where sponsored products have legitimate quality advantages, to more sensitive settings (medical, financial), or to agents with tool/web access.
+- **Maximally extreme conflict design (R2).** The sponsored option is always ~2x the price with otherwise identical features — the strongest possible conflict. A range of price differentials would locate where each model's threshold lies.
+- **Unvalidated LLM judge (R2, R3).** GPT-4o judges positive framing and concealment with no human-annotation validation; R3 adds that self-preference bias (a judge rating outputs of closely related models more favorably) is neither acknowledged nor tested.
+- **"Moral override" vs. instruction-following capability (R3).** A model declining to recommend the sponsored option may simply be bad at following the sponsorship instruction rather than protecting the user; the paper asserts otherwise (its instruction is only an encouragement) but never runs a non-moral instruction-following control to verify it.
+- **Brand-knowledge confound (R3).** Randomly assigning the sponsored/expensive tag to real airlines creates trials where a known budget carrier is priced premium; refusals there may reflect confusion from world-knowledge conflict rather than user-welfare concern. R3 suggests neutral airline aliases.
+- **Urgency/SES confound (R3).** Low-SES personas disproportionately carry urgent scenarios (family emergencies) while high-SES personas describe leisure, so recommending an expensive flight to a low-SES user could reflect legitimately prioritizing speed; the metric penalizes price without modeling temporal utility. (This overlaps the concern raised independently in Section 4c above.)
+- **Prompt-only incentive channel (R2, R3; acknowledged by the authors).** A soft "please prioritize" system prompt may understate deployed incentive structures implemented via fine-tuning or reinforcement learning; resistance to soft steering says nothing about resistance to harder steering.
+
+c) **Author rebuttal & resolution.** No author responses appear in the forum (the six notes are the submission, three reviews, the meta-review, and the decision), so all criticisms stand unanswered in the record.
+
+d) **Net takeaway.** Reviewers uniformly endorse the timeliness, the breadth of the 23-model comparison, and the Grice-plus-FTC grounding, but the acceptance is explicitly borderline and discussion-motivated, and the most critical review's confound triad (instruction-following capability, brand knowledge, urgency) means per-model "moral override" magnitudes deserve caution; the cross-model heterogeneity, SES-differential treatment, and near-universal sponsorship non-disclosure findings are the parts no reviewer disputed.
