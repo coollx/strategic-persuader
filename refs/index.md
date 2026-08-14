@@ -13,3 +13,7 @@ One row per reference: a self-contained folder under `related-work/` holding the
 ## Literature reviews and syntheses
 
 Cross-paper documents live in `lit-review/`, listed here, never as table rows.
+
+- [positioning.md](lit-review/positioning.md) — the competitive landscape: ten close neighbors each with what it occupies, our numbered separations, and what we borrow; reviewer-tested attack surfaces with adopted defenses; the unoccupied-cell statement; scooping risks ranked with their clocks.
+- [benchmarks-and-datasets.md](lit-review/benchmarks-and-datasets.md) — task-family taxonomy (veto-power definitions, the three-part filter, the zero-sum degeneracy argument), the dataset inventory with verdicts (CaSiNo chosen; roles for CraigslistBargain, JobInterview, ANAC/GENIUS; rejections with reasons), augmentation precedents, and the environment plan.
+- [methods.md](lit-review/methods.md) — inference-time control taxonomy with the reasoning-visibility verdict, multi-objective conditioned-training recipes and failure modes, the opponent-during-training practice table with the adopted protocol and escalation triggers, and the measurement instruments (ranking-scored opponent estimates, oracle-versus-inferred, trace corruption, the before/after regression; honesty panel deferred).
