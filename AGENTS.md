@@ -84,6 +84,7 @@ Every choice already lands in history through its operation's spine line — tha
 
 - `docs/framing.md` Terms section is the vocabulary allowlist: agents never coin terms or abbreviations; additions only with researcher approval. First use in any document: full term, identifier in parentheses.
 - Plain language everywhere: define concepts at first use; no defensive disclaimers or self-correction narration; labels are A/B/C or numbers, never Greek letters; version names purely numeric.
+- Discussion replies: answer the researcher point by point — for each point, first reword it as understood, then a one-sentence answer, then the development; never refer to a point by its number without restating it (the researcher brainstorms freely and will not re-read what they wrote).
 - Markdown prose is written without hard line breaks: one line per paragraph or bullet, however long; let the editor wrap.
 - Framing amendments: additive ones batch (spine line now, file edit after they survive); retractions edit the file immediately, same commit as the finding.
 
