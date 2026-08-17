@@ -12,4 +12,4 @@ The only path by which the workflow changes. HARD RULE: if this skill was trigge
 3. Propose the minimal revision — prefer deleting or simplifying a rule over adding one; check the proposal against the red-flag words (sha, hash, gate, stamp, marker, tag, tuning constant).
 4. Assess risk. For substantial changes — a routing-table row, a hook behavior, a new rule — dispatch adversarial reviewer agents to attack the proposal before applying it.
 5. Apply only on the researcher's explicit approval: edit AGENTS.md / hooks / skills, append the `[meta]` spine line, commit as `T-NNN: <change>`. Delete the consumed `harness:` backlog lines in the same commit.
-6. Closing question: "port this change to the research-harness template repository?" If yes, apply the same edit there so the next project inherits it.
+6. Every change is applied in both places: this project, and the research-harness template repository so the next project inherits it. The template edit always waits for the researcher's explicit approval — show the proposed template edit, ask, apply only on yes.
